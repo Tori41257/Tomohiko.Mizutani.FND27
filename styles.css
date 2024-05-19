@@ -1,0 +1,216 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    position: relative;
+    height: 50px;
+}
+
+.buttons {
+    display: flex;  /* 新しく追加したボタンを横に並べる */
+}
+
+.settings-button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-right: 10px;  /* ボタン間に余白を追加 */
+}
+
+.title {
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.media {
+    display: flex;
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    flex-direction: column; /* 要素を縦方向に並べる */
+    width: 100%; /* 親要素の幅に合わせる */
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: auto; 
+    position: relative;
+    margin: auto;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+.control-button {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .header, .main, .content, .media {
+        flex-direction: column;
+    }
+    .settings-button, .title {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+    }
+    .status, .image-container {
+        width: 100%;
+    }
+}
+
+/*ウィンドウのデザイン*/
+/*https://www.yo1000.com/ff-window-like-card/*/
+.window-design {
+    border-top: 2px solid #838383;
+    border-left: 2px solid #838383;
+    border-right: 2px solid #393939;
+    border-bottom: 2px solid #393939;
+    box-shadow: #292929 0 0 0 2px;
+
+    background: linear-gradient(
+            90deg, 
+            rgba(68, 68, 68, 1) 0, 
+            rgba(119, 119, 119, 1) 67%);
+}
+
+.status-message-container {
+    display: flex;
+    justify-content: space-around; /* 要素間にスペースを均等に配置 */
+    align-items: center; /* 垂直方向の中央揃え */
+    width: 100%; /* コンテナ全体の幅を使用 */
+    height: 100%;
+}
+
+.status{
+    flex: 1; /* 各要素が利用可能なスペースを均等に占める */
+    padding: 10px;
+    margin: 5px;
+    text-align:  left;; /* テキストを中央揃え */
+    width: 30%; /* コンテナ全体の幅を使用 */   
+    height: 300px; /* 高さを300pxに固定 */
+    color: white; /* フォントの色を白に設定 */
+    opacity: 0.9; 
+
+}
+.message-box {
+    flex: 1; /* 各要素が利用可能なスペースを均等に占める */
+    padding: 10px;
+    margin: 5px;
+    text-align:  left;; /* テキストを中央揃え */
+    overflow-y: auto; /* 縦方向にスクロールバーを表示 */
+    width: 70%; /* コンテナ全体の幅を使用 */
+    height: 300px; /* 高さを300pxに固定 */
+    color: white; /* フォントの色を白に設定 */
+    opacity: 0.9; 
+}
+
+/** 下準備_ボタン **/
+
+.btn {
+    border-style: none;
+    cursor: pointer;
+}
+
+/** 下準備_十字配置部品 **/
+
+.cross-layout {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+    justify-content: center; /* ボタンを水平方向に中央揃え */
+    bottom: 10px;  /* 下から10pxの位置 */
+    left: 50%;  /* 左から50%の位置 */
+    transform: translateX(-50%);  /* X軸方向に自身の幅の半分だけ左にずらす */
+
+}
+
+.cross-layout .position-top {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+.cross-layout .position-left {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.cross-layout .position-center {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+.cross-layout .position-right {
+    grid-row: 2 / 3;
+    grid-column: 3/4;
+}
+
+.cross-layout .position-bottom {
+    grid-row: 3 / 4;
+    grid-column: 2/3;
+}
+
+
+
+/**　コントローラーの左側_十字キー**/
+
+.cross-key-btn {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(66, 86, 123, 0.5);
+    opacity: 0.9; 
+}
+
+.left-mark {
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.right-mark {
+    display: block;
+    transform: rotate(90deg);
+}
+
+.bottom-mark {
+    display: block;
+    transform: rotate(180deg);
+}
