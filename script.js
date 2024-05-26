@@ -158,15 +158,6 @@ function shakeImage() {
   shake();
 }
 
-// デモ画像とWEBカメラ画像を切り替える関数
-function toggleImage() {
-  const img = document.getElementById('webcamImage');
-  if (img.src.includes('api/v1/stream')) {
-    img.src = 'images/demo_image.png'; // 代替画像のパス
-  } else {
-    img.src = 'http://192.168.4.1/api/v1/stream'; // 元の画像のパス
-  }
-}
 
  // 説明書を表示する関数
  function showManual() {
@@ -238,5 +229,4 @@ document.getElementById("centerAction").addEventListener("click", function () {
 }, false);
 
 document.getElementById('shakeButton').addEventListener('click', shakeImage);
-document.getElementById('toggleImage').addEventListener('click', toggleImage);
 document.getElementById('showManual').addEventListener('click', showManual);
