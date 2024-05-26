@@ -5,51 +5,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>It's my dangeon!</title>
+  <script src="script.js" defer></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <style>
-    body {
-      background-image: url('wallpaper.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  </style>
+
+
 </head>
 
 <body>
+  
   <div class="container">
     <div class="header">
-      <div class="buttons">
-        <button id="connect1" class="settings-button is-success is-light" onclick="connectCube()">接続</button>
-        <button id="disconnect1" class="settings-button is-danger is-light">切断</button>
-        <button id="light1" class="button is-info is-light">点灯</button>
-        <button id="motor1" class="button is-info is-light">モーター</button>
-
+      <div class="left-buttons">
+        <button id="connect1" class="settings-button" onclick="connectCube()">接続</button>
+        <button id="disconnect1" class="settings-button">切断</button>
+        <button id="shakeButton" class="control-button">ダメージエフェクト</button>
+        <button id="toggleImage" class="control-button">切り替え</button> 
+      </div>
+      <div class="right-buttons">
+        <button id="showManual" class="control-button">説明書を表示</button> <!-- 説明書を表示するボタン -->
       </div>
       <div class="title">Robot UI</div>
     </div>
     <div class="main">
+      <div id="overlay" class="manual">
+        <img id="manualImage" src="images/manual.png" alt="説明書"> <!-- 説明書の画像 -->
+      </div>
+      <div id="overlayShake" class="overlay"></div> <!-- ダメージ表現用のオーバーレイ -->
       <div class="content">
-        <div class="media">
-          <div class="image-container">
-            <img width="640" height="480" src="http://192.168.4.1/api/v1/stream" alt="WebCamera Image"
-              style="display: block; margin: auto;">
-            <div class="cross-layout">
-              <button id="moveForward" class="position-top btn cross-key-btn"><span class="top-mark">▲</span></button>
-              <button id="turnLeft" class="position-left btn cross-key-btn"><span class="left-mark">▲</span></button>
-              <button class="position-center btn cross-key-btn"><span class="center-mark">●</span></button>
-              <button id="turnRight" class="position-right btn cross-key-btn"><span class="right-mark">▲</span></button>
-              <button id="moveBack" class="position-bottom btn cross-key-btn"><span class="bottom-mark">▲</span></button>
+        <div class="content">
+          <div class="media">
+            <div class="image-container">
+              <img id="webcamImage" width="640" height="480" src="http://192.168.4.1/api/v1/stream"
+                alt="WebCamera Image" style="display: block; margin: auto;">
+
+              <div class="cross-layout">
+                <button id="moveForward" class="position-top cross-key-btn"><span class="top-mark">▲</span></button>
+                <button id="turnLeft" class="position-left cross-key-btn"><span class="left-mark">▲</span></button>
+                <button id="centerAction" class="position-center cross-key-btn"><span
+                    class="center-mark">●</span></button>
+                <button id="turnRight" class="position-right cross-key-btn"><span class="right-mark">▲</span></button>
+                <button id="moveBack" class="position-bottom cross-key-btn"><span class="bottom-mark">▲</span></button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="status-message-container">
-        <div id="status" class="status window-design">StatusWindow</div>
-        <div class="message-box window-design">MessageBox<br></div>
+        <div class="status-message-container">
+          <div id="status" class="status window-design">StatusWindow</div>
+          <div id="message-box" class="message-box window-design">MessageBox<br></div>
+        </div>
       </div>
-    </div>
-    <script src="script.js"></script>
+
+
 </body>
 
 </html>

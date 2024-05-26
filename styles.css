@@ -1,7 +1,12 @@
+/* 全体のスタイル */
 body, html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-image: url('images/wallpaper.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -10,6 +15,7 @@ body, html {
     height: 100%;
 }
 
+/* ヘッダーのスタイル */
 .header {
     display: flex;
     justify-content: space-between;
@@ -21,17 +27,25 @@ body, html {
     height: 50px;
 }
 
-.buttons {
-    display: flex;  /* 新しく追加したボタンを横に並べる */
+.left-buttons, .right-buttons {
+    display: flex;
 }
 
-.settings-button {
+.right-buttons {
+    margin-left: auto;
+}
+
+.settings-button, .control-button {
     background-color: #666;
     color: white;
     border: none;
     padding: 8px 16px;
     cursor: pointer;
-    margin-right: 10px;  /* ボタン間に余白を追加 */
+    margin-right: 10px; /* ボタン間に余白を追加 */
+}
+
+.control-button {
+    margin-left: 10px;
 }
 
 .title {
@@ -42,6 +56,7 @@ body, html {
     top: 50%;
 }
 
+/* メインコンテンツのスタイル */
 .main {
     display: flex;
     flex: 1;
@@ -68,8 +83,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
     position: relative;
     margin: auto;
 }
@@ -79,37 +94,31 @@ img {
     margin: auto;
 }
 
-.control-button {
-    margin-left: 10px;
-}
-
+/* メディアクエリ */
 @media (max-width: 768px) {
     .header, .main, .content, .media {
         flex-direction: column;
     }
+
     .settings-button, .title {
         position: static;
         transform: none;
         margin: 10px auto;
     }
+
     .status, .image-container {
         width: 100%;
     }
 }
 
-/*ウィンドウのデザイン*/
-/*https://www.yo1000.com/ff-window-like-card/*/
+/* ウィンドウデザイン */
 .window-design {
     border-top: 2px solid #838383;
     border-left: 2px solid #838383;
     border-right: 2px solid #393939;
     border-bottom: 2px solid #393939;
     box-shadow: #292929 0 0 0 2px;
-
-    background: linear-gradient(
-            90deg, 
-            rgba(68, 68, 68, 1) 0, 
-            rgba(119, 119, 119, 1) 67%);
+    background: linear-gradient(90deg, rgba(68, 68, 68, 1) 0, rgba(119, 119, 119, 1) 67%);
 }
 
 .status-message-container {
@@ -120,48 +129,38 @@ img {
     height: 100%;
 }
 
-.status{
-    flex: 1; /* 各要素が利用可能なスペースを均等に占める */
+.status, .message-box {
     padding: 10px;
     margin: 5px;
-    text-align:  left;; /* テキストを中央揃え */
-    width: 30%; /* コンテナ全体の幅を使用 */   
-    height: 300px; /* 高さを300pxに固定 */
-    color: white; /* フォントの色を白に設定 */
-    opacity: 0.9; 
-
+    text-align: left;
+    opacity: 0.9;
+    margin-top: 50px;
+    box-sizing: border-box; /* パディングとボーダーを含めてサイズを計算 */
 }
+
+.status {
+    width: 30%; /* コンテナ全体の幅を使用 */
+    height: 200px; /* 高さを200pxに固定 */
+    color: white; /* フォントの色を白に設定 */
+}
+
 .message-box {
-    flex: 1; /* 各要素が利用可能なスペースを均等に占める */
-    padding: 10px;
-    margin: 5px;
-    text-align:  left;; /* テキストを中央揃え */
     overflow-y: auto; /* 縦方向にスクロールバーを表示 */
     width: 70%; /* コンテナ全体の幅を使用 */
-    height: 300px; /* 高さを300pxに固定 */
+    height: 200px; /* 高さを200pxに固定 */
     color: white; /* フォントの色を白に設定 */
-    opacity: 0.9; 
 }
 
-/** 下準備_ボタン **/
-
-.btn {
-    border-style: none;
-    cursor: pointer;
-}
-
-/** 下準備_十字配置部品 **/
-
+/* 十字配置部品 */
 .cross-layout {
     position: absolute;
     display: grid;
     grid-template-columns: 50px 50px 50px;
     grid-template-rows: 50px 50px 50px;
     justify-content: center; /* ボタンを水平方向に中央揃え */
-    bottom: 10px;  /* 下から10pxの位置 */
-    left: 50%;  /* 左から50%の位置 */
-    transform: translateX(-50%);  /* X軸方向に自身の幅の半分だけ左にずらす */
-
+    bottom: 0px; /* 下から0pxの位置 */
+    left: 50%; /* 左から50%の位置 */
+    transform: translateX(-50%); /* X軸方向に自身の幅の半分だけ左にずらす */
 }
 
 .cross-layout .position-top {
@@ -181,23 +180,22 @@ img {
 
 .cross-layout .position-right {
     grid-row: 2 / 3;
-    grid-column: 3/4;
+    grid-column: 3 / 4;
 }
 
 .cross-layout .position-bottom {
     grid-row: 3 / 4;
-    grid-column: 2/3;
+    grid-column: 2 / 3;
 }
 
-
-
-/**　コントローラーの左側_十字キー**/
-
+/* 十字キー */
 .cross-key-btn {
     width: 50px;
     height: 50px;
     background-color: rgba(66, 86, 123, 0.5);
-    opacity: 0.9; 
+    opacity: 0.9;
+    border-style: none;
+    cursor: pointer;
 }
 
 .left-mark {
@@ -213,4 +211,75 @@ img {
 .bottom-mark {
     display: block;
     transform: rotate(180deg);
+}
+
+/* 十字キーにカーソルが重なったときの挙動 */
+button.position-center:hover,
+button.position-top:hover,
+button.position-left:hover,
+button.position-right:hover,
+button.position-bottom:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+    font-size: 2.0em; /* フォントサイズを大きくする */
+}
+
+button.position-top:hover {
+    display: flex;
+    align-items: flex-start; /* フレックスボックスを使用して上端に揃える */
+    justify-content: center; /* 水平方向に中央揃え */
+}
+
+button.position-left:hover {
+    display: flex;
+    align-items: center; /* 垂直方向に中央揃え */
+    justify-content: flex-start; /* 水平方向に左揃え */
+}
+
+button.position-right:hover {
+    display: flex;
+    align-items: center; /* 垂直方向に中央揃え */
+    justify-content: flex-end; /* 水平方向に右揃え */
+}
+
+button.position-bottom:hover {
+    display: flex;
+    align-items: flex-end; /* フレックスボックスを使用して下端に揃える */
+    justify-content: center; /* 水平方向に中央揃え */
+}
+
+/* オーバーレイ */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.3);
+    display: none;
+    z-index: 10;
+}
+
+.overlay img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* 説明書オーバーレイ */
+.manual {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; /* 最初は非表示 */
+}
+
+.manual img {
+    max-width: 90%;
+    max-height: 90%;
 }
